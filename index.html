@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todoapp self 만들기</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Todo App</h1>
+        <!-- <input type="text" v-model="inputText" v-on:keyup.enter="addItem">
+        <button v-on:click="addItem">ADD</button> -->
+
+        <input type="text" v-model="inputText" v-on:keyup.enter="fetchItems">
+        <button v-on:click="fetchItems">fecth</button>
+        <div>
+            {{ todoItems }}
+            <ul>
+                인자 안넘길때
+                <!-- <li v-for="todoItem in todoItems"></li> -->
+                <!-- <button v-on:click="removeItem">REMOVE</button> -->
+
+                <li v-for="(todoItem, index) in todoItems">
+                    {{ todoItem }}
+                    <button v-on:click="removeItem(todoItem, index)">REMOVE</button>
+                </li>
+                <!-- todoItems X, todoItem 0 -->
+
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+    new Vue({
+        el: '#app', 
+        data: {
+            inputText: '',
+            todoItems: []
+        },
+        methods: {
+            'addItem': function(e){
+                console.log('click Add');
+                console.log(e);
+
+
+                var value = this.inputText;
+                localStorage.setItem(value, value);
+                //데이터가 비워지면서 화면도 같이 갱신
+                this.inputText = '';
+
+                this.todoItems.push(value);
+
+                // 로컬스토리지 데이터 한번에 받기
+                // localStorage.getAll 없다
+                // for 돌려야 한다.ㅋㅋㅋㅋ
+
+                // 저장소에서 꺼내오기
+               
+
+                // 태그에서 v-on:keyup.enter //엔터일 때 해당 속성을 실행한다 라는 의미
+                // if(e.keyCode === 13) {
+                //     console.log(e);
+
+                //     var value = this.inputText;
+                //     localStorage.setItem(value, value);
+                //     //데이터가 비워지면서 화면도 같이 갱신
+                //     this.inputText = '';
+                // }
+
+           
+                // // 서버에 데이터를 넘길때 post 쓴다. ajax 사용
+                // $.ajax({
+                //     type: 'POST'
+                // })
+                // // vue에서 서버에 남길 때 axios.post('주소', 데이터)
+                // axios.post('주소', this.inputText);
+            },
+            'fetchItems': function () {
+                for (var i = 0; i < localStorage.length; i++) {
+                    var v = localStorage.key(i);
+                    console.log(v);
+                    this.todoItems.push(v);
+                }
+            },
+            'removeItem': function (todoItem, index) {
+                console.log(todoItem, index);  
+                this.todoItems.splice(index, 1);
+                localStorage.removeItem(todoItem);             
+            }
+        },
+        created: function () {
+            // 인스턴스가 생성됐을때 실행되는 부분 creat
+            this.fetchItems();
+        }
+    })
+    </script>
+</body>
+</html>
