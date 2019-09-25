@@ -12,12 +12,12 @@
         <!-- <input type="text" v-model="inputText" v-on:keyup.enter="addItem">
         <button v-on:click="addItem">ADD</button> -->
 
-        <input type="text" v-model="inputText" v-on:keyup.enter="fetchItems">
-        <button v-on:click="fetchItems">fecth</button>
+        <input type="text" v-model="inputText" v-on:keyup.enter="addItem">
+        <button v-on:click="addItem">fecth</button>
         <div>
             {{ todoItems }}
             <ul>
-                인자 안넘길때
+                <!-- 인자 안넘길때 -->
                 <!-- <li v-for="todoItem in todoItems"></li> -->
                 <!-- <button v-on:click="removeItem">REMOVE</button> -->
 
