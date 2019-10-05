@@ -1,6 +1,8 @@
 # todoapp
 
+> 로컬 스토리지를 사용했기 때문에 쿠키를 지우지 않는 이상 데이터는 남아있는다.
 > [테스트 링크](https://cuveloper.github.io/todoapp/)
+
 
 ## 따라한거
 > 브라우저 내부 저장소(로컬 스토리지:local storage)호출해서 뿌리기
