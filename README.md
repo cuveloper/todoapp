@@ -1,6 +1,7 @@
 # todoapp
 
 > 로컬 스토리지를 사용했기 때문에 쿠키를 지우지 않는 이상 데이터는 남아있는다
+
 > [테스트 링크](https://cuveloper.github.io/todoapp/)
 
 
